@@ -45,11 +45,9 @@ const Hero = () => {
                 </motion.div>
             </div>
 
-// ...existing code...
-
             {/* Headline and subtext */}
             <h1 className="text-center text-3xl md:text-4xl font-extrabold max-w-3xl leading-tight mb-3">
-                The most Intriguing SPACE for Web3 Gaming and Entertainment
+                The Bridge between Web2 and Web3 Gaming and Entertainment
             </h1>
             <p className="text-center text-gray-300 mb-6 max-w-xl text-sm md:text-base">
                 Experience the new frontier of gaming, metaverse and awesome content
