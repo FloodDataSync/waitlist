@@ -1,23 +1,24 @@
 "use client";
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { motion } from "framer-motion";
 import Image from "next/image";
 
 const Navbar = () => {
-    const navLinks = [
-  { title: "Home", href: "#" },
-  {
-    title: "Resources▾",
-    submenu: [
-      { title: "Docs", href: "#" },
-      { title: "Blog", href: "#" },
-      { title: "Community", href: "#" },
-    ],
-  },
-  { title: "Ecosystem", href: "#" },
-];
+  const navLinks = [
+    { title: "Home", href: "#" },
+    {
+      title: "Resources▾",
+      submenu: [
+        { title: "Docs", href: "#" },
+        { title: "Blog", href: "#" },
+        { title: "Community", href: "#" },
+      ],
+    },
+    { title: "Ecosystem", href: "#" },
+  ];
 
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,17 +29,49 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`w-full flex justify-between items-center px-8 md:px-16 py-4 fixed top-0 z-[9999] transition-colors duration-300 ${scrolled ? 'bg-[#000000] shadow-lg' : 'bg-transparent'}`}> 
+    <nav className={`w-full flex justify-between items-center px-8 md:px-16 py-4 fixed top-0 z-[9999] transition-colors duration-300 ${scrolled ? 'bg-[#000000] shadow-lg' : 'bg-transparent'}`}>
       <div className="flex items-center space-x-3 text-white font-bold text-xl cursor-pointer">
         <div>
-            <Image
-              src="/logo.png"
-              alt="Logo"
-              width={100}
-              height={100}
-            />
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            width={100}
+            height={100}
+          />
         </div>
       </div>
+      {/* Hamburger Menu Button */}
+      <button
+        className="md:hidden text-white text-2xl"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        ☰
+      </button>
+      {/* Mobile Menu */}
+      <ul className={`absolute top-full left-0 w-full bg-[#101010] text-white flex flex-col items-center space-y-4 py-4 transition-transform ${menuOpen ? 'translate-y-0' : '-translate-y-full'} md:hidden`}>
+        {navLinks.map((link, i) =>
+          link.submenu ? (
+            <li key={i} className="relative group cursor-pointer">
+              {link.title}
+              <ul className="mt-2 bg-[#202020] rounded-lg shadow-xl p-2 space-y-2">
+                {link.submenu.map((sub, si) => (
+                  <li
+                    key={si}
+                    className="text-sm text-gray-300 hover:text-white px-3 py-1 rounded cursor-pointer"
+                  >
+                    {sub.title}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ) : (
+            <li key={i} className="cursor-pointer hover:text-red-600 transition">
+              {link.title}
+            </li>
+          )
+        )}
+      </ul>
+      {/* Desktop Menu */}
       <ul className="hidden md:flex items-center space-x-8 text-white font-medium">
         {navLinks.map((link, i) =>
           link.submenu ? (
@@ -66,7 +99,7 @@ const Navbar = () => {
         Launch App
       </button>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
