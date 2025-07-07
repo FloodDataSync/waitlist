@@ -1,5 +1,12 @@
 module.exports = {
   images: {
-    domains: ['placehold.co'], // Add the hostname here
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+        pathname: '/**',
+      },
+    ],
+    dangerouslyAllowSVG: true, // Enable SVG images
   },
 };
