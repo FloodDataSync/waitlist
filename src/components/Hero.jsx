@@ -11,7 +11,7 @@ const Hero = () => {
       <HeroCarousel />
 
       {/* Headline */}
-      <h1 className="text-center text-3xl md:text-4xl font-extrabold max-w-3xl leading-tight mb-3">
+      <h1 className="text-center text-3xl md:text-4xl font-extrabold max-w-3xl leading-tight mt-8">
         The Bridge between Web2 and Web3 Gaming and Entertainment
       </h1>
       <p className="text-center text-gray-300 mb-6 max-w-xl text-sm md:text-base">

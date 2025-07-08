@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Instagram } from 'lucide-react'
+import { Instagram, Linkedin, } from 'lucide-react'
 import { Twitter } from 'lucide-react'
 
 const Footer = () => {
@@ -16,6 +16,9 @@ const Footer = () => {
                         </a>
                         <a href="#" className="hover:text-gray-300" aria-label="Instagram">
                             <Instagram />
+                        </a>
+                                                <a href="#" className="hover:text-gray-300" aria-label="Instagram">
+                            <Linkedin />
                         </a>
                     </div>
                 </div>

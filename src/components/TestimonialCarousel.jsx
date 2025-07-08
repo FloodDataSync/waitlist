@@ -99,28 +99,23 @@ export function TestimonialCarousel() {
 		return () => window.removeEventListener("resize", handleResize);
 	}, []);
 
-	// Function to scroll the carousel in the given direction
+	// Function to scroll the carousel in the given direction (infinite loop)
 	const scroll = (direction) => {
 		if (isTransitioning) return;
-
-		const newIndex = cardIndex + direction;
-		setCardIndex(newIndex);
-
-		const newX = -newIndex * cardWidth;
+		let newIndex = cardIndex + direction;
 		setIsTransitioning(true);
-
-		animate(x, newX, {
+		animate(x, -newIndex * cardWidth, {
 			...SPRING_OPTIONS,
 			onComplete: () => {
-				// Reset the position of the carousel for circular scrolling
-				if (newIndex === START_INDEX - 1) {
-					const resetIndex = testimonials.length + START_INDEX - 1;
+				let resetIndex = newIndex;
+				if (newIndex < cardsPerView) {
+					resetIndex = testimonials.length + (newIndex - cardsPerView);
 					x.set(-resetIndex * cardWidth);
-					setCardIndex(resetIndex);
-				} else if (newIndex === testimonials.length + START_INDEX) {
-					x.set(-START_INDEX * cardWidth);
-					setCardIndex(START_INDEX);
+				} else if (newIndex >= testimonials.length + cardsPerView) {
+					resetIndex = cardsPerView + (newIndex - (testimonials.length + cardsPerView));
+					x.set(-resetIndex * cardWidth);
 				}
+				setCardIndex(resetIndex);
 				setIsTransitioning(false);
 			},
 		});
@@ -129,10 +124,10 @@ export function TestimonialCarousel() {
 	// Auto-scroll effect
 	useEffect(() => {
 		const interval = setInterval(() => {
-			scroll(1); // Automatically scroll one card at a time
-		}, 3000); // Adjust the interval duration as needed
+			scroll(1);
+		}, 3000);
 		return () => clearInterval(interval);
-	}, [cardIndex, cardWidth]);
+	}, [cardIndex, cardWidth, cardsPerView]);
 
 	return (
 		<div className="relative w-full overflow-hidden py-16">
@@ -158,7 +153,7 @@ export function TestimonialCarousel() {
 						>
 							<Card className="relative w-full h-[300px] bg-card shadow-lg overflow-visible mb-12 transition-colors duration-300 bg-[#2F2F2F42]">
 								<CardContent className="p-6 text-center h-full flex items-center justify-center ">
-									<p className="text-muted-foreground mt-4 text-base italic">
+									<p className="text-muted-foreground mt-4 text-base italic ">
 										"The team at Brissas impressed us from day one. Their understanding of the construction industry and proactive approach to system design helped us implement a solution that fits our exact workflow. BrissTruct isn’t just software—it’s a game changer."
 									</p>
 								</CardContent>

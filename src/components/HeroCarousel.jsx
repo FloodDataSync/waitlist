@@ -16,8 +16,7 @@ const cardsData = [
 	{
 		id: 2,
 		imgSrc: "/frame2.png",
-		videoSrc:
-			"/video.mp4",
+		videoSrc: "/video.mp4",
 		name: "Wade Fox",
 		followers: "12.5k",
 		avatarSrc: "/frameavatar.png",
@@ -146,7 +145,7 @@ export function HeroCarousel() {
 											className="object-cover"
 											data-ai-hint={card.hint}
 										/>
-										{offset === 0 && (
+										{offset === 0 && card.avatarSrc && card.name && card.followers && (
 											<motion.div
 												className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent"
 												initial={{ opacity: 0, y: 20 }}

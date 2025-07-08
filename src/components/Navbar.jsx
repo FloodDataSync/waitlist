@@ -53,12 +53,15 @@ const Navbar = () => {
       </button>
 
       {/* Mobile Menu */}
-      <ul className={`absolute top-full left-0 w-full bg-[#101010] text-white flex flex-col items-center space-y-4 py-4 transition-transform duration-300 ${menuOpen ? 'translate-y-0' : '-translate-y-full'} md:hidden`}>
+      <ul
+        className={`fixed md:hidden left-0 right-0 top-[72px] w-full bg-[#101010] text-white flex flex-col items-center space-y-4 py-4 transition-all duration-300 z-[9998] ${menuOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-4 opacity-0 pointer-events-none'}`}
+        style={{ minHeight: 'calc(100vh - 72px)' }}
+      >
         {navLinks.map((link, i) =>
           link.submenu ? (
-            <li key={i} className="relative group cursor-pointer">
-              <span className="block text-lg font-medium">{link.title}</span>
-              <ul className="mt-2 bg-[#202020] rounded-lg shadow-xl p-2 space-y-2">
+            <li key={i} className="relative w-full group cursor-pointer">
+              <span className="block text-lg font-medium px-6 py-2 w-full text-left">{link.title}</span>
+              <ul className="mt-2 bg-[#202020] rounded-lg shadow-xl p-2 space-y-2 w-[90vw] mx-auto">
                 {link.submenu.map((sub, si) => (
                   <li
                     key={si}
@@ -70,11 +73,16 @@ const Navbar = () => {
               </ul>
             </li>
           ) : (
-            <li key={i} className="cursor-pointer hover:text-red-600 transition text-lg font-medium">
+            <li key={i} className="cursor-pointer hover:text-red-600 transition text-lg font-medium w-full px-6 py-2 text-left">
               {link.title}
             </li>
           )
         )}
+        <li className="w-full px-6 mt-4">
+          <button className="w-full bg-red-600 hover:bg-red-700 transition text-white font-semibold px-5 py-2 rounded-md">
+            Launch App
+          </button>
+        </li>
       </ul>
 
       {/* Desktop Menu */}
