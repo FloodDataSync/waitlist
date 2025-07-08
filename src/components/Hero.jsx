@@ -18,7 +18,7 @@ const Hero = () => {
         Experience the new frontier of gaming, metaverse and awesome content
       </p>
       <button className="bg-red-600 hover:bg-red-700 transition text-white font-semibold rounded-md px-6 py-3">
-        Join the waitlist
+        Join the presale
       </button>
     </section>
   );

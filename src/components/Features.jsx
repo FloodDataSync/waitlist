@@ -27,7 +27,7 @@ const Features = () => {
         {
             title: "Community Feed",
             description:
-                "Discover fan communities and trending game discussions.",
+                "Discover fan communities and trending game discussions",
             imgAlt:
                 "Futuristic 3D style image of various friendly game characters engaging in conversation around a digital speech bubble cluster",
         },
@@ -57,12 +57,14 @@ const Features = () => {
                             <div className="bg-[#121212] rounded-xl p-6 flex flex-col items-center text-center h-full relative">
                                 <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
                                 <p className="text-xs text-gray-400 mb-8">{feature.description}</p>
+                                <div className='flex justify-end items-end'>
                                 <img
-                                    src={`/feature-icons/feature-${i + 1}.png`}
+                                    src={`/Feature${i + 1}.png`}
                                     alt={feature.imgAlt}
                                     className=" w-16 h-16 md:w-20 md:h-20"
                                     loading="lazy"
                                 />
+                                </div>
                                 {/* Feature icon at bottom right, responsive */}
                             </div>
                         </div>

@@ -12,32 +12,32 @@ import { cn } from "@/lib/utils";
 const testimonials = [
 	{
 		name: "Alex Johnson",
-		avatar: "https://placehold.co/100x100.png",
+		avatar: "/Avatar.png",
 		hint: "man portrait",
 	},
 	{
 		name: "Maria Garcia",
-		avatar: "https://placehold.co/100x100.png",
+		avatar: "/Avatar.png",
 		hint: "woman portrait",
 	},
 	{
 		name: "James Smith",
-		avatar: "https://placehold.co/100x100.png",
+		avatar: "/Avatar.png",
 		hint: "person portrait",
 	},
 	{
 		name: "Linda Williams",
-		avatar: "https://placehold.co/100x100.png",
+		avatar: "/Avatar.png",
 		hint: "lady portrait",
 	},
 	{
 		name: "Robert Brown",
-		avatar: "https://placehold.co/100x100.png",
+		avatar: "/Avatar.png",
 		hint: "gentleman portrait",
 	},
 	{
 		name: "Patricia Jones",
-		avatar: "https://placehold.co/100x100.png",
+		avatar: "/Avatar.png",
 		hint: "female portrait",
 	},
 ];
@@ -156,15 +156,14 @@ export function TestimonialCarousel() {
 							}}
 							className="select-none flex flex-col items-center cursor-grab active:cursor-grabbing"
 						>
-							<Card className="relative w-full h-[250px] bg-card shadow-lg overflow-visible mb-12 border-2 border-accent/20 hover:border-accent/50 transition-colors duration-300">
-								<CardContent className="p-6 text-center h-full flex items-center justify-center">
+							<Card className="relative w-full h-[300px] bg-card shadow-lg overflow-visible mb-12 transition-colors duration-300 bg-[#2F2F2F42]">
+								<CardContent className="p-6 text-center h-full flex items-center justify-center ">
 									<p className="text-muted-foreground mt-4 text-base italic">
-										"A fantastic experience from start to finish. Highly
-										recommended!"
+										"The team at Brissas impressed us from day one. Their understanding of the construction industry and proactive approach to system design helped us implement a solution that fits our exact workflow. BrissTruct isn’t just software—it’s a game changer."
 									</p>
 								</CardContent>
 								<div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
-									<Avatar className="w-24 h-24 border-4 border-background bg-background shadow-md">
+									<Avatar className="w-24 h-24 bg-background shadow-md">
 										<AvatarImage
 											src={testimonial.avatar}
 											alt={testimonial.name}
@@ -176,8 +175,8 @@ export function TestimonialCarousel() {
 									</Avatar>
 								</div>
 							</Card>
-							<div className="mt-4">
-								<p className="text-center font-bold text-lg text-foreground/90">
+							<div className="mt-2">
+								<p className="text-center text-lg text-white">
 									{testimonial.name}
 								</p>
 							</div>

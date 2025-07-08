@@ -11,36 +11,21 @@ import { Radio } from "lucide-react";
 const cardsData = [
 	{
 		id: 1,
-		imgSrc: "https://placehold.co/600",
-		hint: "portrait photography",
-		videoSrc:
-			"https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",
-		name: "Aria",
-		followers: "2.3M",
-		avatarSrc: "https://placehold.co",
-		avatarHint: "woman smiling",
+		imgSrc: "/frame1.png",
 	},
 	{
 		id: 2,
-		imgSrc: "https://placehold.co",
-		hint: "urban fashion",
+		imgSrc: "/frame2.png",
 		videoSrc:
-			"https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",
-		name: "Leo",
-		followers: "1.8M",
-		avatarSrc: "https://placehold.co",
+			"/video.mp4",
+		name: "Wade Fox",
+		followers: "12.5k",
+		avatarSrc: "/frameavatar.png",
 		avatarHint: "man serious",
 	},
 	{
 		id: 3,
-		imgSrc: "https://placehold.co",
-		hint: "nature scenery",
-		videoSrc:
-			"https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",
-		name: "Nova",
-		followers: "3.1M",
-		avatarSrc: "https://placehold.co",
-		avatarHint: "woman nature",
+		imgSrc: "/thirdframe.png",
 	},
 ];
 

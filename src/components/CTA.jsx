@@ -8,7 +8,7 @@ const CTA = () => {
       initial={{ opacity: 0, x: -50 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
-      className="max-w-screen-xl mx-auto mt-20 rounded-3xl p-10 md:p-16 px-10 md:px-20 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0 bg-gradient-to-r from-red-600 to-blue-700 text-white relative overflow-visible"
+      className="max-w-screen-xl mx-auto mt-20 rounded-3xl p-10 md:p-16 px-20 md:px-20 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0 bg-gradient-to-r from-red-600 to-blue-700 text-white relative overflow-visible"
       aria-label="Call to action to level up your gaming experience"
     >
       <div className="flex-1 max-w-xl text-center md:text-left flex flex-col items-center md:items-start">
