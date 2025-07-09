@@ -6,7 +6,7 @@ import { HeroCarousel } from "./HeroCarousel";
 const Hero = () => {
 
   return (
-    <section className="w-full relative pt-20 flex flex-col items-center justify-center text-white px-6 md:px-20 max-w-screen-xl mx-auto select-none">
+    <section className="w-full relative pt-20 flex flex-col items-center justify-center text-white max-w-screen-xl mx-auto select-none">
       {/* Stacked Cards Section */}
       <HeroCarousel />
 

@@ -39,20 +39,20 @@ export function HeroCarousel() {
 	}, []);
 
 	useEffect(() => {
-		if (playingVideo) return;
+		// Only pause carousel if video is playing in fullscreen dialog
+		if (playingVideo && playingVideo.fullscreen) return;
 
 		const interval = setInterval(() => {
 			setActiveIndex((prevIndex) => (prevIndex + 1) % cardsData.length);
-		}, 3000);
+		}, 15000);
 		return () => clearInterval(interval);
 	}, [playingVideo]);
 
 	useEffect(() => {
-		if (playingVideo) {
+		if (playingVideo && playingVideo.fullscreen) {
 			const timer = setTimeout(() => {
 				setPlayingVideo(null);
 			}, 15000);
-
 			return () => clearTimeout(timer);
 		}
 	}, [playingVideo]);
@@ -65,8 +65,8 @@ export function HeroCarousel() {
 
 	return (
 		<>
-			<div className="relative w-full max-w-2xl mx-auto h-[50vh] sm:h-[450px] flex flex-col items-center justify-center">
-				<div className="relative w-full h-full sm:h-[400px]">
+			<div className="relative w-[65%] h-[55vh] sm:h-[520px] mt-4 flex flex-col items-center justify-center max-w-7xl mx-auto">
+				<div className="relative w-full h-full sm:h-[470px]">
 					{cardsData.map((card, index) => {
 						const offset = (index - activeIndex + total) % total;
 
@@ -116,6 +116,10 @@ export function HeroCarousel() {
 							}
 						}
 
+						// If this card is at the center and has a video, play it inline
+						const isCenter = offset === 0;
+						const shouldPlayInline = isCenter && card.videoSrc;
+
 						return (
 							<motion.div
 								key={card.id}
@@ -130,22 +134,35 @@ export function HeroCarousel() {
 									opacity,
 								}}
 								transition={{ type: "spring", stiffness: 60, damping: 20 }}
+								// Only open fullscreen dialog if user clicks and wants fullscreen
 								onClick={() => {
-									if (offset === 0) {
-										setPlayingVideo(card.videoSrc);
+									if (isCenter && card.videoSrc) {
+										setPlayingVideo({ src: card.videoSrc, fullscreen: true });
 									}
 								}}
 							>
-								<Card className="w-[80%] sm:w-[60%] h-full sm:h-[350px] shadow-2xl bg-card rounded-xl overflow-hidden">
+								<Card className="w-[90%] sm:w-[70%] h-full sm:h-[420px] shadow-2xl bg-card rounded-xl overflow-hidden">
 									<CardContent className="p-0 h-full relative">
-										<Image
-											src={card.imgSrc}
-											alt={`Card image ${card.id}`}
-											fill
-											className="object-cover"
-											data-ai-hint={card.hint}
-										/>
-										{offset === 0 && card.avatarSrc && card.name && card.followers && (
+										{/* Inline video if center and has videoSrc */}
+										{shouldPlayInline ? (
+											<video
+												src={card.videoSrc}
+												className="w-full h-full object-cover"
+												autoPlay
+												muted
+												loop
+												playsInline
+											/>
+										) : (
+											<Image
+												src={card.imgSrc}
+												alt={`Card image ${card.id}`}
+												fill
+												className="object-cover"
+												data-ai-hint={card.hint}
+											/>
+										)}
+										{isCenter && card.avatarSrc && card.name && card.followers && (
 											<motion.div
 												className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent"
 												initial={{ opacity: 0, y: 20 }}
@@ -189,15 +206,16 @@ export function HeroCarousel() {
 					})}
 				</div>
 			</div>
+			{/* Only show fullscreen dialog if playingVideo is set and fullscreen */}
 			<Dialog
-				open={!!playingVideo}
+				open={!!playingVideo && playingVideo.fullscreen}
 				onOpenChange={(isOpen) => !isOpen && setPlayingVideo(null)}
 			>
 				<DialogContent className="p-0 border-0 bg-black max-w-none w-screen h-screen flex items-center justify-center">
 					<DialogTitle className="sr-only">Video Player</DialogTitle>
-					{playingVideo && (
+					{playingVideo && playingVideo.fullscreen && (
 						<video
-							src={playingVideo}
+							src={playingVideo.src}
 							className="w-full h-auto max-h-full object-contain"
 							autoPlay
 							controls

@@ -22,7 +22,7 @@ const CTA = () => {
             Join gamers streaming, competing, and connecting across epic titles daily.
           </p>
           <button className="bg-white text-red-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition w-full md:w-auto text-center">
-            Join the Waitlist &rarr;
+            Join the Presale &rarr;
           </button>
         </div>
         {/* Right image, fills height and touches bottom */}

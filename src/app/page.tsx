@@ -6,7 +6,6 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Features from "@/components/Features";
 import CTA from "@/components/CTA";
-import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 
 
@@ -20,7 +19,6 @@ export default function Home() {
         <About />
         <Features />
         <CTA />
-        <Testimonials />
       </main>
       <Footer />
     </div>
