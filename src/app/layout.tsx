@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Freetyl | Home",
-  description: "Web3 Gaming app",
+  title: "Flood Data Sync",
+  description: "Flood Data Sync Waitlist",
 };
 
 export default function RootLayout({
